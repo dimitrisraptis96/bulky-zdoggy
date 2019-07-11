@@ -109,15 +109,15 @@ function Guy() {
   // useRender allows us to hook into the render-loop
   const ref = useRef();
   let t = 0;
-  useRender(() => (ref.current.rotate.y = Math.cos((t += 0.1) / TAU)));
+  useRender(() => (ref.current.rotate.y = Math.cos((t += 0.05) / TAU)));
 
   return (
     //Lekani
-    <Shape
+    <Ellipse
       ref={ref}
       rotate={{ y: TAU / 8 }}
-      path={[{ x: -3 }, { x: 3 }]}
-      stroke={3}
+      path={[{ x: -4 }, { x: 4 }]}
+      stroke={6}
       color="#747B9E"
     >
       <a.Anchor>
@@ -173,7 +173,7 @@ function Guy() {
       {/* Legs */}
       <Leg />
       <Leg translate={{ x: 3 }} />
-    </Shape>
+    </Ellipse>
   );
 }
 
