@@ -113,13 +113,7 @@ function Guy() {
 
   return (
     //Lekani
-    <Ellipse
-      ref={ref}
-      rotate={{ y: TAU / 8 }}
-      path={[{ x: -4 }, { x: 4 }]}
-      stroke={6}
-      color="#747B9E"
-    >
+    <Ellipse ref={ref} path={[{ x: -4 }, { x: 4 }]} stroke={6} color="#747B9E">
       <a.Anchor>
         {/* Body */}
         <Shape
@@ -180,6 +174,13 @@ function Guy() {
 ReactDOM.render(
   <Illustration zoom={8}>
     <Guy />
+    <Ellipse
+      translate={{ y: 20 }}
+      diameter={10}
+      rotate={{ x: -TAU / 3.5 }}
+      color="#363642"
+      fill
+    />
   </Illustration>,
   document.getElementById("root")
 );
