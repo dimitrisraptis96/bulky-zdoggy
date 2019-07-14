@@ -89,7 +89,24 @@ const Arm = props => {
           color="#EA0"
           rotate={rotation.interpolate(r => ({ x: TAU / 4 - r }))}
         />
+        {props.hasDumbbell && <Dumbbell />}
       </a.Shape>
+    </a.Shape>
+  );
+};
+
+const Dumbbell = props => {
+  return (
+    // Bicep
+    <a.Shape
+      path={[{ x: 8 }, { y: -0.2 }]}
+      translate={{ x: -4, y: 6 }}
+      color="#222"
+      stroke={1}
+      {...props}
+    >
+      <Shape translate={{ x: 1, y: -0.2 }} stroke={2} color="#222" />
+      <Shape translate={{ x: 7 }} stroke={2} color="#222" />
     </a.Shape>
   );
 };
@@ -113,7 +130,13 @@ function Guy() {
 
   return (
     //Lekani
-    <Ellipse ref={ref} path={[{ x: -4 }, { x: 4 }]} stroke={6} color="#747B9E">
+    <Ellipse
+      ref={ref}
+      // rotate={{ y: TAU / 6 }}
+      path={[{ x: -4 }, { x: 4 }]}
+      stroke={6}
+      color="#747B9E"
+    >
       <a.Anchor>
         {/* Body */}
         <Shape
@@ -158,6 +181,7 @@ function Guy() {
           {/* Arms */}
           <Arm />
           <Arm
+            hasDumbbell
             translate={{ x: 5, y: -2 }}
             up={up}
             // rotate={rotation.interpolate(r => ({ x: TAU / 4 - r }))}
