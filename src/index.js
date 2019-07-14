@@ -57,7 +57,7 @@ const Leg = props => (
 );
 const Arm = props => {
   const { rotation } = useSpring({
-    rotation: props.up ? -Math.PI / 4 : Math.PI / 2
+    rotation: props.up ? -Math.PI / 4 : Math.PI / 2 + Math.PI / 18
   });
 
   return (
@@ -65,6 +65,7 @@ const Arm = props => {
     <a.Shape
       path={[{ y: 0 }, { y: 4 }]}
       translate={{ x: -5, y: -2 }}
+      rotate={{ x: props.hasDumbbell ? TAU / 36 : 0 }}
       color="#F0F2EF"
       color="#EA0"
       stroke={3}
@@ -72,8 +73,10 @@ const Arm = props => {
     >
       <a.Shape
         translate={{ y: 6 }}
-        color="#F0F2EF"
-        rotate={rotation.interpolate(r => ({ x: TAU / 4 - r }))}
+        color="#EA0"
+        rotate={
+          props.hasDumbbell && rotation.interpolate(r => ({ x: TAU / 4 - r }))
+        }
       >
         {/* Forearm */}
         <a.Shape
@@ -87,7 +90,9 @@ const Arm = props => {
           translate={{ z: 0, y: 6, x: 0 }}
           stroke={3}
           color="#EA0"
-          rotate={rotation.interpolate(r => ({ x: TAU / 4 - r }))}
+          rotate={
+            props.hasDumbbell && rotation.interpolate(r => ({ x: TAU / 4 - r }))
+          }
         />
         {props.hasDumbbell && <Dumbbell />}
       </a.Shape>
